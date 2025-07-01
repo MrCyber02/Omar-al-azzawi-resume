@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,15 +53,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+				cyber: {
+					green: '#00ff41',
+					cyan: '#00ffff',
+					dark: '#0a0a0a',
+					darker: '#050505',
+					gray: '#1a1a1a',
 				}
 			},
 			borderRadius: {
@@ -84,11 +82,65 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'glitch': {
+					'0%, 100%': { transform: 'translateX(0)' },
+					'20%': { transform: 'translateX(-2px)' },
+					'40%': { transform: 'translateX(2px)' },
+					'60%': { transform: 'translateX(-1px)' },
+					'80%': { transform: 'translateX(1px)' }
+				},
+				'glow-pulse': {
+					'0%, 100%': { 
+						boxShadow: '0 0 20px rgba(0, 255, 65, 0.3)',
+						borderColor: 'rgba(0, 255, 65, 0.5)'
+					},
+					'50%': { 
+						boxShadow: '0 0 40px rgba(0, 255, 65, 0.8)',
+						borderColor: 'rgba(0, 255, 65, 1)'
+					}
+				},
+				'matrix-rain': {
+					'0%': { transform: 'translateY(-100vh)' },
+					'100%': { transform: 'translateY(100vh)' }
+				},
+				'typing': {
+					'from': { width: '0' },
+					'to': { width: '100%' }
+				},
+				'blink': {
+					'0%, 50%': { opacity: '1' },
+					'51%, 100%': { opacity: '0' }
+				},
+				'scan-line': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(100%)' }
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'glitch': 'glitch 0.3s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
+				'matrix-rain': 'matrix-rain 3s linear infinite',
+				'typing': 'typing 3.5s steps(40, end)',
+				'blink': 'blink 1s infinite',
+				'scan-line': 'scan-line 2s ease-in-out infinite',
+				'fade-in-up': 'fade-in-up 0.6s ease-out'
+			},
+			fontFamily: {
+				'mono': ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+				'cyber': ['Orbitron', 'sans-serif'],
 			}
 		}
 	},
