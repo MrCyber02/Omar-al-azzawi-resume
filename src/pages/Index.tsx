@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import AccessTerminal from '@/components/AccessTerminal';
 import CursorGlow from '@/components/CursorGlow';
@@ -86,7 +85,7 @@ const Index = () => {
                 EMAIL
               </button>
               <button 
-                onClick={() => window.open('https://linkedin.com/in/omaralazzawi', '_blank')} 
+                onClick={() => window.open('https://www.linkedin.com/in/omeralazzawi/', '_blank')} 
                 className="hover:text-cyber-green transition-colors"
               >
                 LINKEDIN
