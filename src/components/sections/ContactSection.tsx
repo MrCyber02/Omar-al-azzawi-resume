@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
@@ -52,7 +51,7 @@ const ContactSection = () => {
   };
 
   const handleLinkedInClick = () => {
-    window.open('https://linkedin.com/in/omaralazzawi', '_blank');
+    window.open('https://www.linkedin.com/in/omeralazzawi/', '_blank');
   };
 
   return (
@@ -98,7 +97,7 @@ const ContactSection = () => {
                   </div>
                   <div className="flex items-center cursor-pointer hover:text-cyber-green transition-colors" onClick={handleLinkedInClick}>
                     <span className="text-cyber-cyan w-16">linkedin:</span>
-                    <span className="text-cyber-green hover:underline">"linkedin.com/in/omaralazzawi"</span>
+                    <span className="text-cyber-green hover:underline">"linkedin.com/in/omeralazzawi"</span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-cyber-cyan w-16">languages:</span>
@@ -142,11 +141,11 @@ const ContactSection = () => {
                 <div className="text-sm">
                   <div className="flex justify-between">
                     <span>Email:</span>
-                    <span className="text-cyber-cyan">&lt; 24 hours</span>
+                    <span className="text-cyber-cyan">< 24 hours</span>
                   </div>
                   <div className="flex justify-between">
                     <span>LinkedIn:</span>
-                    <span className="text-cyber-cyan">&lt; 12 hours</span>
+                    <span className="text-cyber-cyan">< 12 hours</span>
                   </div>
                 </div>
               </div>
