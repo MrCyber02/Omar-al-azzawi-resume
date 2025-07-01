@@ -1,3 +1,4 @@
+import { ExternalLink } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -8,6 +9,7 @@ interface Project {
   highlight?: boolean;
   category: 'Security' | 'Web Development' | 'Automation' | 'AI & Experimental';
   url?: string;
+  image?: string;
 }
 
 const projects: Project[] = [
@@ -196,18 +198,34 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           FEATURED
         </div>
       )}
+
+      {/* Website Preview Image */}
+      {project.image && (
+        <div className="mb-4 rounded overflow-hidden border border-cyber-green/30">
+          <img 
+            src={project.image} 
+            alt={`${project.title} preview`}
+            className="w-full h-32 object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      )}
       
       <div className="flex justify-between items-start mb-4">
-        <div>
+        <div className="flex-1">
           <h3 className="text-lg font-cyber text-cyber-green mb-1">{project.title}</h3>
           {project.url && (
-            <a href={`https://${project.url}`} target="_blank" rel="noopener noreferrer" 
-               className="text-cyber-cyan hover:text-cyber-green text-sm font-mono transition-colors">
-              → {project.url}
+            <a 
+              href={`https://${project.url}`} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center gap-1 text-cyber-cyan hover:text-cyber-green text-sm font-mono transition-colors group"
+            >
+              <ExternalLink size={14} className="group-hover:scale-110 transition-transform" />
+              {project.url}
             </a>
           )}
         </div>
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 ml-2">
           <span className={`text-xs font-mono px-2 py-1 rounded border ${getCategoryColor(project.category)}`}>
             {project.category.toUpperCase()}
           </span>
