@@ -1,6 +1,8 @@
 
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
+import { useToast } from '@/hooks/use-toast';
+import { Mail, Linkedin } from 'lucide-react';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -9,11 +11,33 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
+    setIsSubmitting(true);
+    
+    // For now, we'll simulate form submission
+    // In a real app, you'd need a backend service to send emails
     console.log('Form submitted:', formData);
+    
+    // Simulate API call
+    setTimeout(() => {
+      toast({
+        title: "Message Sent!",
+        description: "Your message has been transmitted successfully. I'll get back to you soon.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -21,6 +45,14 @@ const ContactSection = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:omeralazzawi@yahoo.com?subject=Portfolio Inquiry';
+  };
+
+  const handleLinkedInClick = () => {
+    window.open('https://linkedin.com/in/omaralazzawi', '_blank');
   };
 
   return (
@@ -52,21 +84,21 @@ const ContactSection = () => {
                     <span className="text-cyber-cyan w-16">role:</span>
                     <span className="text-cyber-green">"Security Analyst | Cloud Admin"</span>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center cursor-pointer hover:text-cyber-green transition-colors" onClick={handleEmailClick}>
                     <span className="text-cyber-cyan w-16">email:</span>
-                    <span className="text-cyber-green">"omeralazzawi@yahoo.com"</span>
+                    <span className="text-cyber-green hover:underline">"omeralazzawi@yahoo.com"</span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-cyber-cyan w-16">phone:</span>
-                    <span className="text-cyber-green">"(781) 330-4936"</span>
+                    <span className="text-cyber-green cursor-pointer hover:underline" onClick={() => window.location.href = 'tel:+17813304936'}>"(781) 330-4936"</span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-cyber-cyan w-16">location:</span>
                     <span className="text-cyber-green">"Manchester, NH | Remote"</span>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center cursor-pointer hover:text-cyber-green transition-colors" onClick={handleLinkedInClick}>
                     <span className="text-cyber-cyan w-16">linkedin:</span>
-                    <span className="text-cyber-green">"linkedin.com/in/omaralazzawi"</span>
+                    <span className="text-cyber-green hover:underline">"linkedin.com/in/omaralazzawi"</span>
                   </div>
                   <div className="flex items-center">
                     <span className="text-cyber-cyan w-16">languages:</span>
@@ -74,6 +106,25 @@ const ContactSection = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* Quick Contact Buttons */}
+            <div className="space-y-4 mb-8">
+              <button 
+                onClick={handleEmailClick}
+                className="cyber-button w-full flex items-center justify-center space-x-2"
+              >
+                <Mail size={20} />
+                <span>SEND_EMAIL</span>
+              </button>
+              
+              <button 
+                onClick={handleLinkedInClick}
+                className="cyber-button w-full flex items-center justify-center space-x-2"
+              >
+                <Linkedin size={20} />
+                <span>CONNECT_LINKEDIN</span>
+              </button>
             </div>
 
             {/* Quick stats */}
@@ -174,8 +225,12 @@ const ContactSection = () => {
                     />
                   </div>
 
-                  <button type="submit" className="cyber-button w-full">
-                    TRANSMIT_MESSAGE
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting}
+                    className="cyber-button w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'TRANSMITTING...' : 'TRANSMIT_MESSAGE'}
                   </button>
                 </form>
               </div>

@@ -12,6 +12,13 @@ import ContactSection from '@/components/sections/ContactSection';
 const Index = () => {
   const [accessGranted, setAccessGranted] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   if (!accessGranted) {
     return <AccessTerminal onAccessGranted={() => setAccessGranted(true)} />;
   }
@@ -29,11 +36,11 @@ const Index = () => {
               OMAR.AL_AZZAWI
             </div>
             <div className="hidden md:flex space-x-6 font-mono text-sm">
-              <a href="#home" className="hover:text-cyber-cyan transition-colors">HOME</a>
-              <a href="#skills" className="hover:text-cyber-cyan transition-colors">SKILLS</a>
-              <a href="#experience" className="hover:text-cyber-cyan transition-colors">EXPERIENCE</a>
-              <a href="#projects" className="hover:text-cyber-cyan transition-colors">PROJECTS</a>
-              <a href="#contact" className="hover:text-cyber-cyan transition-colors">CONTACT</a>
+              <button onClick={() => scrollToSection('home')} className="hover:text-cyber-cyan transition-colors">HOME</button>
+              <button onClick={() => scrollToSection('skills')} className="hover:text-cyber-cyan transition-colors">SKILLS</button>
+              <button onClick={() => scrollToSection('experience')} className="hover:text-cyber-cyan transition-colors">EXPERIENCE</button>
+              <button onClick={() => scrollToSection('projects')} className="hover:text-cyber-cyan transition-colors">PROJECTS</button>
+              <button onClick={() => scrollToSection('contact')} className="hover:text-cyber-cyan transition-colors">CONTACT</button>
             </div>
             <div className="font-mono text-xs text-cyber-cyan">
               STATUS: ONLINE
@@ -72,15 +79,24 @@ const Index = () => {
               Securing digital assets • Protecting enterprise infrastructure • Remote operations specialist
             </div>
             <div className="flex justify-center space-x-6 text-sm">
-              <a href="mailto:omeralazzawi@yahoo.com" className="hover:text-cyber-green transition-colors">
+              <button 
+                onClick={() => window.location.href = 'mailto:omeralazzawi@yahoo.com'} 
+                className="hover:text-cyber-green transition-colors"
+              >
                 EMAIL
-              </a>
-              <a href="https://linkedin.com/in/omaralazzawi" className="hover:text-cyber-green transition-colors">
+              </button>
+              <button 
+                onClick={() => window.open('https://linkedin.com/in/omaralazzawi', '_blank')} 
+                className="hover:text-cyber-green transition-colors"
+              >
                 LINKEDIN
-              </a>
-              <a href="tel:+17813304936" className="hover:text-cyber-green transition-colors">
+              </button>
+              <button 
+                onClick={() => window.location.href = 'tel:+17813304936'} 
+                className="hover:text-cyber-green transition-colors"
+              >
                 PHONE
-              </a>
+              </button>
             </div>
             <div className="mt-4 text-xs font-mono opacity-50">
               © 2024 • ENCRYPTED CONNECTION • SECURE TRANSMISSION

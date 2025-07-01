@@ -2,6 +2,18 @@
 import TypingAnimation from '../TypingAnimation';
 
 const HeroSection = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleDownloadResume = () => {
+    // For now, we'll create a mailto link with resume request
+    window.location.href = 'mailto:omeralazzawi@yahoo.com?subject=Resume Request&body=Hello Omar, I would like to request your resume.';
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden cyber-grid">
       <div className="container mx-auto px-4 text-center z-10">
@@ -57,13 +69,22 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="cyber-button">
+            <button 
+              className="cyber-button"
+              onClick={() => scrollToSection('projects')}
+            >
               VIEW_PROJECTS
             </button>
-            <button className="cyber-button">
+            <button 
+              className="cyber-button"
+              onClick={handleDownloadResume}
+            >
               DOWNLOAD_RESUME
             </button>
-            <button className="cyber-button">
+            <button 
+              className="cyber-button"
+              onClick={() => scrollToSection('contact')}
+            >
               CONTACT_ME
             </button>
           </div>
